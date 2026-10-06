@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas: 253 251 247;
+    --card: 255 255 255;
+    --soft: 248 250 252;
+    --cream: 255 248 230;
+    --ink: 45 55 72;
+    --muted: 113 128 150;
+    --line: 226 232 240;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(var(--canvas));
+    color: rgb(var(--ink));
+    font-family: "Nunito", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+html.dark {
+  color-scheme: dark;
+  --canvas: 17 24 32;
+  --card: 26 35 46;
+  --soft: 34 45 58;
+  --cream: 38 34 26;
+  --ink: 237 241 245;
+  --muted: 156 170 188;
+  --line: 48 60 75;
+}
