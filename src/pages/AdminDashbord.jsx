@@ -6,7 +6,6 @@ import BimbelkuContext from "../context/BimbelkuContext";
 // target pendaftar per bulan
 const TARGET_BULANAN = 50;
 
-// 'Rp 100.000' -> 100000
 const hargaKeAngka = (harga) =>
   parseInt(String(harga).replace(/\D/g, ""), 10) || 0;
 
