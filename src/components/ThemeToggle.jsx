@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 
 function ThemeToggle() {
-  // pilihan tersimpan > preferensi sistem
+  // pilihan tersimpan > preferensi sistem maka
   const [gelap, setGelap] = useState(() => {
     try {
       const simpan = localStorage.getItem("bimbelku_tema");
@@ -14,7 +14,7 @@ function ThemeToggle() {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
-  // pasang class dark di <html> dan simpan pilihan
+  // memasang class dark 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", gelap);
 
