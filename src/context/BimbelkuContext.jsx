@@ -12,7 +12,6 @@ const ambilStorage = (kunci, awal) => {
     return awal;
   }
 };
-
 // simpan localstorage
 const simpanStorage = (kunci, nilai) => {
   try {
@@ -62,8 +61,6 @@ export function BimbelkuProvider({ children }) {
       website: "",
     },
   ]);
-
-  // =========================
   // bimbel yang sedang dibuka (disimpan id-nya)
   const [idAktif, setIdAktif] = useState(() =>
     ambilStorage("bimbelku_aktif", null),
@@ -76,21 +73,16 @@ export function BimbelkuProvider({ children }) {
   const [pendaftar, setPendaftar] = useState(() =>
     ambilStorage("bimbelku_pendaftar", []),
   );
-
-  // sinkron ke localstorage
+  // menyingkron kan  ke localstorage
   useEffect(() => simpanStorage("bimbelku_aktif", idAktif), [idAktif]);
   useEffect(() => simpanStorage("bimbelku_riwayat", idRiwayat), [idRiwayat]);
   useEffect(
     () => simpanStorage("bimbelku_pendaftar", pendaftar),
     [pendaftar],
   );
-
   // bimbel yang sudah didaftari, dibaca dari dataBimbel agar selalu terbaru
   const bimbelDipilih = dataBimbel.filter((item) => idRiwayat.includes(item.id));
-
-  // =========================
   // tambah bimbel
-  // =========================
   const tambahBimbel = (bimbelBaru) => {
     setDataBimbel((dataLama) => [
       ...dataLama,
@@ -105,16 +97,11 @@ export function BimbelkuProvider({ children }) {
       },
     ]);
   };
-
-  // =========================
   // hapus bimbel
   const hapusBimbel = (id) => {
     setDataBimbel((dataLama) => dataLama.filter((item) => item.id !== id));
   };
-
-  // =========================
   // ubah status bimbel
-  // =========================
   const ubahStatusBimbel = (id) => {
     setDataBimbel((dataLama) =>
       dataLama.map((item) =>
@@ -127,10 +114,7 @@ export function BimbelkuProvider({ children }) {
       ),
     );
   };
-
-  // =========================
   // tambah pendaftar
-  // =========================
   const tambahPendaftar = (dataPeserta) => {
     setPendaftar((dataLama) => [
       ...dataLama,
