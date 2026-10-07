@@ -10,7 +10,8 @@ function BimbelCard({
   sudahDipilih,
 }) {
   return (
-    <div className="group flex h-full flex-col rounded-3xl border border-slate-100 dark:border-white/10 bg-card p-4 font-['Nunito',sans-serif] shadow-[0_2px_14px_rgba(45,55,72,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#389F97]/10 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+    <div className="group flex h-full flex-col rounded-3xl border border-slate-100 dark:border-white/10 bg-card p-4 font-['Nunito',sans-serif] shadow-[0_2px_14px_rgba(45,55,72,0.06)]
+     transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#389F97]/10 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       {/* image */}
       <div className="relative aspect-video overflow-hidden rounded-2xl bg-slate-100 dark:bg-white/10">
         <img
@@ -54,7 +55,10 @@ function BimbelCard({
           {!sudahDipilih ? (
             <button
               onClick={onPilih}
-              className="rounded-full bg-[#389F97] px-5 py-2.5 font-['Fredoka',sans-serif] text-sm font-medium tracking-wide text-white shadow-md shadow-[#389F97]/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#2f8a83] hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#389F97]/30 active:scale-95 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="rounded-full bg-[#389F97] px-5 py-2.5 font-['Fredoka',sans-serif] text-sm font-medium tracking-wide text-white shadow-md 
+              shadow-[#389F97]/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#2f8a83] hover:shadow-lg 
+              focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#389F97]/30 active:scale-95 
+              motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               Lihat Detail
             </button>

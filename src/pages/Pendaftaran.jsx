@@ -39,11 +39,13 @@ function Pendaftaran() {
   const tandai = (field) => setTouched((lama) => ({ ...lama, [field]: true }));
   const pesanError = (field) => (touched[field] ? errors[field] : "");
   const kelasInput = (field) =>
-    `w-full rounded-2xl border-2 bg-card px-4 py-3 text-ink outline-none transition-all placeholder:text-muted/70 focus:ring-4 motion-reduce:transition-none ${
-      pesanError(field)
-        ? "border-[#F27A54] focus:border-[#F27A54] focus:ring-[#F27A54]/20"
-        : "border-slate-100 dark:border-white/10 focus:border-[#389F97] focus:ring-[#389F97]/20"
-    }`;
+    `w-full rounded-2xl border-2 bg-card px-4 py-3 text-ink outline-none transition-all placeholder:text-muted/70 
+  focus:ring-4 motion-reduce:transition-none ${
+    pesanError(field)
+      ? "border-[#F27A54] focus:border-[#F27A54] focus:ring-[#F27A54]/20"
+      : "border-slate-100 dark:border-white/10 focus:border-[#389F97] focus:ring-[#389F97]/20"
+  }`;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setTouched({
@@ -92,7 +94,8 @@ function Pendaftaran() {
     );
   }
   // pesan awal ke penyelenggara
-  const pesan = `Halo, saya ${nama}. Saya tertarik mendaftar ${bimbel.nama} (paket ${paket}, ${bimbel.harga}). Metode pembayaran: ${pembayaran}. Kontak saya: ${noHp} / ${email}. Mohon info selanjutnya.`;
+  const pesan = `Halo, saya ${nama}. Saya tertarik mendaftar ${bimbel.nama} (paket ${paket}, ${bimbel.harga}). 
+  Metode pembayaran: ${pembayaran}. Kontak saya: ${noHp} / ${email}. Mohon info selanjutnya.`;
   const linkWA = bimbel.whatsapp
     ? `https://wa.me/${bimbel.whatsapp}?text=${encodeURIComponent(pesan)}`
     : "";

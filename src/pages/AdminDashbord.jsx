@@ -30,7 +30,7 @@ function AdminDashboard() {
     (total, item) => total + hargaKeAngka(item.harga),
     0,
   );
-  // rata-rata rating (abaikan 0)
+  // rata-rata rating 
   const bimbelBerating = dataBimbel.filter((item) => item.rating > 0);
   const rataRating = bimbelBerating.length
     ? (
