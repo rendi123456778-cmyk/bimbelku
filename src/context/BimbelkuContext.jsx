@@ -73,7 +73,7 @@ export function BimbelkuProvider({ children }) {
   const [pendaftar, setPendaftar] = useState(() =>
     ambilStorage("bimbelku_pendaftar", []),
   );
-  // sinkron ke localstorage
+  // menyingkron kan  ke localstorage
   useEffect(() => simpanStorage("bimbelku_aktif", idAktif), [idAktif]);
   useEffect(() => simpanStorage("bimbelku_riwayat", idRiwayat), [idRiwayat]);
   useEffect(() => simpanStorage("bimbelku_pendaftar", pendaftar), [pendaftar]);

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
 
 function ThemeToggle() {
-  // pilihan tersimpan > preferensi sistem
+  // pilihan tersimpan > preferensi sistem maka
   const [gelap, setGelap] = useState(() => {
     try {
       const simpan = localStorage.getItem("bimbelku_tema");
