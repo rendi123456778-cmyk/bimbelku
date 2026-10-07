@@ -5,13 +5,10 @@ import ThemeToggle from "./ThemeToggle";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const linkDesktop =
     "rounded-full px-4 py-2 text-[15px] font-semibold text-muted transition-colors duration-200 hover:bg-primary/10 hover:text-[#2f8a83] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25 dark:hover:text-[#6fd0c7] motion-reduce:transition-none";
-
   const linkMobile =
     "rounded-xl px-4 py-3 font-semibold text-ink transition-colors duration-200 hover:bg-primary/10 hover:text-[#2f8a83] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25 dark:hover:text-[#6fd0c7] motion-reduce:transition-none";
-
   return (
     <nav className="sticky top-0 z-50 border-b border-slate-200/70 bg-canvas px-4 py-3 font-body text-ink dark:border-white/10 md:px-8">
       <div className="mx-auto max-w-6xl">
@@ -30,30 +27,24 @@ function Navbar() {
               <h1>Bimbelku</h1>
             </div>
           </Link>
-
           <div className="flex items-center gap-1">
             {/* menu desktop */}
             <div className="hidden items-center gap-1 md:flex">
               <Link to="/" className={linkDesktop}>
                 Beranda
               </Link>
-
               <Link to="/bimbel-saya" className={linkDesktop}>
                 Bimbel Saya
               </Link>
-
               <Link to="/pendaftaran" className={linkDesktop}>
                 Pendaftaran
               </Link>
-
               <Link to="/admin" className={linkDesktop}>
                 Admin
               </Link>
             </div>
-
             {/* tombol tema */}
             <ThemeToggle />
-
             {/* tombol hamburger mobile */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -65,7 +56,6 @@ function Navbar() {
             </button>
           </div>
         </div>
-
         {/* menu mobile */}
         {menuOpen && (
           <div className="mt-3 rounded-2xl border border-slate-100 bg-card p-2 shadow-[0_8px_24px_rgba(45,55,72,0.08)] dark:border-white/10 md:hidden">
@@ -77,7 +67,6 @@ function Navbar() {
               >
                 Beranda
               </Link>
-
               <Link
                 to="/bimbel-saya"
                 onClick={() => setMenuOpen(false)}
@@ -85,7 +74,6 @@ function Navbar() {
               >
                 Bimbel Saya
               </Link>
-
               <Link
                 to="/pendaftaran"
                 onClick={() => setMenuOpen(false)}
@@ -93,7 +81,6 @@ function Navbar() {
               >
                 Pendaftaran
               </Link>
-
               <Link
                 to="/admin"
                 onClick={() => setMenuOpen(false)}
@@ -108,5 +95,4 @@ function Navbar() {
     </nav>
   );
 }
-
 export default Navbar;

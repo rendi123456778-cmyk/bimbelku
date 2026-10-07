@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+
 function BimbelCard({
   image,
   nama,
@@ -17,7 +18,6 @@ function BimbelCard({
           alt={nama}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
-
         <span
           className={`absolute left-3 top-3 rounded-full bg-card px-3.5 py-1 text-xs font-bold shadow-sm ${
             status === "Online"
@@ -28,7 +28,6 @@ function BimbelCard({
           {status}
         </span>
       </div>
-
       {/* content */}
       <div className="flex flex-1 flex-col px-2 pb-1 pt-5">
         <div className="mb-2 flex items-center justify-between">
@@ -36,28 +35,22 @@ function BimbelCard({
             {nama}
           </h2>
         </div>
-
         <div className="flex items-center gap-1.5">
           <span>
             <Star className="h-5 w-5 fill-[#F9C851] text-[#F9C851]" />
           </span>
-
           <span className="text-sm font-bold text-ink">{rating}</span>
         </div>
-
         <p className="mt-3 text-sm leading-relaxed text-muted">
           Bimbingan belajar dengan materi lengkap dan tutor berpengalaman.
         </p>
-
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 dark:border-white/10 pt-5">
           <div>
             <p className="text-xs font-semibold text-muted">Mulai dari</p>
-
             <p className="font-['Fredoka',sans-serif] text-lg font-semibold text-[#389F97]">
               {harga}
             </p>
           </div>
-
           {!sudahDipilih ? (
             <button
               onClick={onPilih}
@@ -78,5 +71,4 @@ function BimbelCard({
     </div>
   );
 }
-
 export default BimbelCard;

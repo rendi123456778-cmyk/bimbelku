@@ -6,7 +6,6 @@ import BimbelSaya from "./pages/BimbelSaya";
 import Pendaftaran from "./pages/Pendaftaran";
 import AdminDashboard from "./pages/AdminDashbord";
 import KelolaBimbel from "./pages/KelolaBimbel";
-
 import { BimbelkuProvider } from "./context/BimbelkuContext";
 
 function AppContent() {
@@ -24,7 +23,6 @@ function AppContent() {
     </div>
   );
 }
-
 function App() {
   return (
     <BimbelkuProvider>
@@ -34,5 +32,4 @@ function App() {
     </BimbelkuProvider>
   );
 }
-
 export default App;

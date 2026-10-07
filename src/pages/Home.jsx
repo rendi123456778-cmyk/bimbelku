@@ -7,10 +7,8 @@ import Hero from "../assets/Hero.png";
 
 function Home() {
   const { dataBimbel, bimbelDipilih, setIdAktif } = useContext(BimbelkuContext);
-
   const [search, setSearch] = useState("");
   const [kategori, setKategori] = useState("Semua");
-
   const navigate = useNavigate();
   // pilih bimbel
   const pilihBimbel = (bimbel) => {
@@ -22,9 +20,7 @@ function Home() {
     const cocokSearch = bimbel.nama
       .toLowerCase()
       .includes(search.toLowerCase());
-
     const cocokKategori = kategori === "Semua" || bimbel.kategori === kategori;
-
     return cocokSearch && cocokKategori;
   });
   // kategori dinamis
@@ -32,7 +28,6 @@ function Home() {
     "Semua",
     ...new Set(dataBimbel.map((bimbel) => bimbel.kategori)),
   ];
-
   return (
     <main className="min-h-screen bg-canvas font-body text-ink">
       {/* hero */}
@@ -44,19 +39,16 @@ function Home() {
           aria-hidden="true"
           className="absolute inset-0 bg-deep/75 md:bg-gradient-to-r md:from-deep/90 md:via-deep/60 md:to-deep/10"
         />
-
         <div className="relative mx-auto max-w-7xl px-4 pb-32 pt-16 md:px-8 md:pb-40 md:pt-24">
           <div className="max-w-2xl motion-safe:animate-fade-up">
             <p className="mb-4 font-heading text-sm font-semibold tracking-wide text-accent md:text-base">
               SELAMAT DATANG DI BIMBELKU
             </p>
-
             <h1 className="font-heading text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Belajar Lebih Mudah,
               <br />
               Raih Masa Depanmu
             </h1>
-
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/90 md:text-lg">
               Temukan bimbel terbaik sesuai kebutuhan dan tingkatkan kemampuanmu
               bersama tutor berpengalaman.
@@ -64,7 +56,6 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* konten */}
       <section className="mx-auto max-w-7xl px-4 pb-20 md:px-8">
         {/* search */}
@@ -73,7 +64,6 @@ function Home() {
             <span className="text-xl">
               <Search className="h-5 w-5 shrink-0 text-primary" />
             </span>
-
             <input
               type="text"
               aria-label="Cari bimbel"
@@ -84,13 +74,11 @@ function Home() {
             />
           </div>
         </div>
-
         {/* kategori */}
         <div className="mb-12">
           <h2 className="mb-4 font-heading text-lg font-bold text-ink">
             Kategori
           </h2>
-
           <div className="-mx-4 flex gap-3 overflow-x-auto px-4 py-1 md:mx-0 md:flex-wrap md:overflow-visible md:px-0">
             {kategoriUnik.map((item) => (
               <button
@@ -108,22 +96,18 @@ function Home() {
             ))}
           </div>
         </div>
-
         {/* judul bimbel */}
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <h2 className="font-heading text-2xl font-bold text-ink md:text-3xl">
               Bimbel Populer
             </h2>
-
             <p className="mt-1 text-muted">Pilihan bimbel terbaik untuk kamu</p>
           </div>
-
           <p className="shrink-0 rounded-full bg-accent px-4 py-1 text-sm font-bold text-slate-800">
             {dataFilter.length} bimbel
           </p>
         </div>
-
         {/* data bimbel */}
         {dataFilter.length === 0 ? (
           <div className="rounded-3xl border-2 border-dashed border-primary/30 bg-card px-6 py-16 text-center">
@@ -151,5 +135,4 @@ function Home() {
     </main>
   );
 }
-
 export default Home;

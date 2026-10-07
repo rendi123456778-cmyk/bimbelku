@@ -1,8 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import Bimbel1 from "../assets/Bimbel1.png";
+import zenius from "../assets/zenius.png";
+import ganesha from "../assets/ganesha.png";
 
 const BimbelkuContext = createContext();
-
 // baca localstorage
 const ambilStorage = (kunci, awal) => {
   try {
@@ -12,7 +13,6 @@ const ambilStorage = (kunci, awal) => {
     return awal;
   }
 };
-
 // simpan localstorage
 const simpanStorage = (kunci, nilai) => {
   try {
@@ -21,7 +21,6 @@ const simpanStorage = (kunci, nilai) => {
     return;
   }
 };
-
 export function BimbelkuProvider({ children }) {
   // data bimbel
   const [dataBimbel, setDataBimbel] = useState([
@@ -35,11 +34,11 @@ export function BimbelkuProvider({ children }) {
       kategori: "Matematika",
       deskripsi: "Belajar matematika dengan tutor berpengalaman.",
       whatsapp: "628888182198",
-      website: "",
+      website: "https://www.ruangguru.com/privat/matematika",
     },
     {
       id: 2,
-      gambar: Bimbel1,
+      gambar: zenius,
       nama: "Bimbel Fisika",
       harga: "Rp 120.000",
       rating: 4.7,
@@ -47,28 +46,26 @@ export function BimbelkuProvider({ children }) {
       kategori: "Fisika",
       deskripsi: "Pelajari konsep fisika dengan cara yang mudah.",
       whatsapp: "628888182198",
-      website: "",
+      website: "https://www.zenius.net/",
     },
     {
       id: 3,
-      gambar: Bimbel1,
-      nama: "Bimbel Chemistry",
+      gambar: ganesha,
+      nama: "Ganesha Operation",
       harga: "Rp 110.000",
       rating: 4.6,
       status: "Online",
       kategori: "Kimia",
       deskripsi: "Belajar kimia dengan materi lengkap dan interaktif.",
-      whatsapp: "628888182198",
-      website: "",
+      whatsapp: "628112468988",
+      website: "https://ganeshaoperation.com/",
     },
   ]);
-
-  // =========================
   // bimbel yang sedang dibuka (disimpan id-nya)
   const [idAktif, setIdAktif] = useState(() =>
     ambilStorage("bimbelku_aktif", null),
   );
-  // riwayat bimbel yang sudah didaftari (disimpan id-nya)
+  // riwayat bimbel yang sudah didaftarin (disimpan id-nya)
   const [idRiwayat, setIdRiwayat] = useState(() =>
     ambilStorage("bimbelku_riwayat", []),
   );
@@ -76,21 +73,15 @@ export function BimbelkuProvider({ children }) {
   const [pendaftar, setPendaftar] = useState(() =>
     ambilStorage("bimbelku_pendaftar", []),
   );
-
   // sinkron ke localstorage
   useEffect(() => simpanStorage("bimbelku_aktif", idAktif), [idAktif]);
   useEffect(() => simpanStorage("bimbelku_riwayat", idRiwayat), [idRiwayat]);
-  useEffect(
-    () => simpanStorage("bimbelku_pendaftar", pendaftar),
-    [pendaftar],
-  );
-
+  useEffect(() => simpanStorage("bimbelku_pendaftar", pendaftar), [pendaftar]);
   // bimbel yang sudah didaftari, dibaca dari dataBimbel agar selalu terbaru
-  const bimbelDipilih = dataBimbel.filter((item) => idRiwayat.includes(item.id));
-
-  // =========================
+  const bimbelDipilih = dataBimbel.filter((item) =>
+    idRiwayat.includes(item.id),
+  );
   // tambah bimbel
-  // =========================
   const tambahBimbel = (bimbelBaru) => {
     setDataBimbel((dataLama) => [
       ...dataLama,
@@ -105,16 +96,11 @@ export function BimbelkuProvider({ children }) {
       },
     ]);
   };
-
-  // =========================
   // hapus bimbel
   const hapusBimbel = (id) => {
     setDataBimbel((dataLama) => dataLama.filter((item) => item.id !== id));
   };
-
-  // =========================
   // ubah status bimbel
-  // =========================
   const ubahStatusBimbel = (id) => {
     setDataBimbel((dataLama) =>
       dataLama.map((item) =>
@@ -127,10 +113,7 @@ export function BimbelkuProvider({ children }) {
       ),
     );
   };
-
-  // =========================
   // tambah pendaftar
-  // =========================
   const tambahPendaftar = (dataPeserta) => {
     setPendaftar((dataLama) => [
       ...dataLama,
@@ -142,18 +125,15 @@ export function BimbelkuProvider({ children }) {
       },
     ]);
   };
-
   // riwayat
   const tambahRiwayat = (id) => {
     setIdRiwayat((dataLama) =>
       dataLama.includes(id) ? dataLama : [...dataLama, id],
     );
   };
-
   const hapusRiwayat = (id) => {
     setIdRiwayat((dataLama) => dataLama.filter((item) => item !== id));
   };
-
   // ulasan
   const tambahUlasan = (idBimbel, ulasanBaru) => {
     setDataBimbel((dataLama) =>
@@ -161,17 +141,16 @@ export function BimbelkuProvider({ children }) {
         if (bimbel.id !== idBimbel) {
           return bimbel;
         }
-
         const ulasanTerbaru = [
           ...(bimbel.ulasan || []),
           { ...ulasanBaru, id: Date.now() },
         ];
-
         // rating = rata-rata semua ulasan
         const rataRata =
-          ulasanTerbaru.reduce((total, item) => total + Number(item.rating), 0) /
-          ulasanTerbaru.length;
-
+          ulasanTerbaru.reduce(
+            (total, item) => total + Number(item.rating),
+            0,
+          ) / ulasanTerbaru.length;
         return {
           ...bimbel,
           ulasan: ulasanTerbaru,
@@ -180,7 +159,6 @@ export function BimbelkuProvider({ children }) {
       }),
     );
   };
-
   return (
     <BimbelkuContext.Provider
       value={{
@@ -190,19 +168,16 @@ export function BimbelkuProvider({ children }) {
         tambahBimbel,
         hapusBimbel,
         ubahStatusBimbel,
-
         // bimbel aktif dan riwayat
         idAktif,
         setIdAktif,
         bimbelDipilih,
         tambahRiwayat,
         hapusRiwayat,
-
         // pendaftar
         pendaftar,
         setPendaftar,
         tambahPendaftar,
-
         // ulasan
         tambahUlasan,
       }}
@@ -211,5 +186,4 @@ export function BimbelkuProvider({ children }) {
     </BimbelkuContext.Provider>
   );
 }
-
 export default BimbelkuContext;

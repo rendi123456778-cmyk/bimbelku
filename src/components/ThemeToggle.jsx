@@ -10,21 +10,17 @@ function ThemeToggle() {
     } catch {
       return false;
     }
-
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
-
   // pasang class dark di <html> dan simpan pilihan
   useEffect(() => {
     document.documentElement.classList.toggle("dark", gelap);
-
     try {
       localStorage.setItem("bimbelku_tema", gelap ? "gelap" : "terang");
     } catch {
       return;
     }
   }, [gelap]);
-
   return (
     <button
       onClick={() => setGelap(!gelap)}
@@ -36,5 +32,4 @@ function ThemeToggle() {
     </button>
   );
 }
-
 export default ThemeToggle;
